@@ -1,0 +1,49 @@
+{
+    "internal-dpl-clock": "",
+    "internal-dpl-aod-reader": {
+        "time-limit": "0",
+        "orbit-offset-enumeration": "0",
+        "orbit-multiplier-enumeration": "0",
+        "start-value-enumeration": "0",
+        "end-value-enumeration": "-1",
+        "step-value-enumeration": "1",
+        "aod-file": "@\/Users\/valencia\/Desktop\/AO2D_PASS4\/AO2D.txt",
+        "aod-reader-json": "readerConfiguration_reducedEvent.json"
+    },
+    "internal-dpl-injected-dummy-sink": "",
+    "analysis-event-selection": "",
+    "analysis-muon-selection": {
+        "cfgMuonCuts": "muonLowPt",
+        "cfgQA": "true",
+        "cfgAddMuonHistogram": "muon",
+        "processSkimmed": "true",
+        "processDummy": "false"
+    },
+    "analysis-track-selection": "",
+    "analysis-event-mixing": {
+        "cfgTrackCuts": "jpsiO2MCdebugCuts",
+        "cfgMuonCuts": "muonLowPt",
+        "cfgMixingDepth": "1",
+        "cfgAddEventMixingHistogram": "barrel,vertexing,flow",
+        "processBarrelSkimmed": "false",
+        "processMuonSkimmed": "false",
+        "processBarrelMuonSkimmed": "false",
+        "processBarrelVnSkimmed": "false",
+        "processMuonVnSkimmed": "false",
+        "processDummy": "true"
+    },
+    "analysis-prefilter-selection": {
+        "cfgPrefilterPairCut": "",
+        "processBarrelSkimmed": "false",
+        "processDummy": "true"
+    },
+    "analysis-same-event-pairing": "",
+    "analysis-dilepton-hadron": {
+        "cfgLeptonCuts": "jpsiPID1",
+        "cfgAddDileptonHadHistogram": "dilepton-hadron-correlation",
+        "processSkimmed": "false",
+        "processDummy": "true"
+    },
+    "internal-dpl-aod-global-analysis-file-sink": "",
+    "internal-dpl-aod-writer": ""
+}
