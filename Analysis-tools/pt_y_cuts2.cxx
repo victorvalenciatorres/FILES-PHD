@@ -42,7 +42,7 @@ void pt_y_cuts2()
     hMass->Write("mass_without_cuts");
     hMass_File->Close();
 
-    auto Y_Bins = TFile::Open(path + InputFileName + "_Y.root", "RECREATE");
+    auto Pt_Y_Bins = TFile::Open(path + InputFileName + "Pt_Y.root", "RECREATE");
     for (int i = 0; i < y_values.size() - 1; i++)
     {
         double minY = y_values[i];
@@ -50,14 +50,13 @@ void pt_y_cuts2()
         int minY_bin = FindBinY(hMass_y, minY);
         int maxY_bin = FindBinY(hMass_y, maxY);
         
-        TH1D *hMass2 = (TH1D*)hMass_y->ProjectionX(Form("_%2.f-%2.f", minY, maxY), minY_bin, maxY_bin);
+        TH1D *hMass2 = (TH1D*)hMass_y->ProjectionX(Form("_%2.2f-%2.2f", minY, maxY), minY_bin, maxY_bin);
         std::cout << "Entries in Y bin " << i+1 << ": " << hMass2->GetEntries() << std::endl;
-        hMass2->Write(Form("y_%2.f-%2.f", minY, maxY));
+        //hMass2->Write(Form("y_%2.f-%2.f", minY, maxY));
+        hMass2->Write(Form("y_%2.2f-%2.2f", minY, maxY));
         std::cout << "Y bins = " << minY << "--" << maxY << std::endl;
     }
-    Y_Bins->Close();
-
-    auto Pt_Bins = TFile::Open(path + InputFileName + "_Pt.root", "RECREATE");
+    
     for (int i = 0; i < Pt_values.size() - 1; i++)
     {
         double minPt = Pt_values[i];
@@ -67,8 +66,8 @@ void pt_y_cuts2()
         
         TH1D *hMass2 = (TH1D*)hMass_Pt->ProjectionX(Form("_%3.f-%3.f", minPt, maxPt), minPt_bin, maxPt_bin);
         std::cout << "Entries in Pt bin " << i+1 << ": " << hMass2->GetEntries() << std::endl;
-        hMass2->Write(Form("pt_%3.f-%3.f", minPt, maxPt));
+        hMass2->Write(Form("pt_%1.f-%1.f", minPt, maxPt));
         std::cout << "Pt bins = " << minPt << "--" << maxPt << std::endl;
     }
-    Pt_Bins->Close();
+    Pt_Y_Bins->Close();
 }
