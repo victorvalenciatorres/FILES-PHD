@@ -50,10 +50,9 @@ void pt_y_cuts2()
         int minY_bin = FindBinY(hMass_y, minY);
         int maxY_bin = FindBinY(hMass_y, maxY);
         
-        TH1D *hMass2 = (TH1D*)hMass_y->ProjectionX(Form("_%2.2f-%2.2f", minY, maxY), minY_bin, maxY_bin);
+        TH1D *hMass2 = (TH1D*)hMass_y->ProjectionX(Form("_%2.2f_%2.2f", minY, maxY), minY_bin, maxY_bin);
         std::cout << "Entries in Y bin " << i+1 << ": " << hMass2->GetEntries() << std::endl;
-        //hMass2->Write(Form("y_%2.f-%2.f", minY, maxY));
-        hMass2->Write(Form("y_%2.2f-%2.2f", minY, maxY));
+        hMass2->Write(Form("y_%2.2f_%2.2f", minY, maxY));
         std::cout << "Y bins = " << minY << "--" << maxY << std::endl;
     }
     
@@ -64,9 +63,9 @@ void pt_y_cuts2()
         int minPt_bin = FindBinPt(hMass_Pt, minPt);
         int maxPt_bin = FindBinPt(hMass_Pt, maxPt);
         
-        TH1D *hMass2 = (TH1D*)hMass_Pt->ProjectionX(Form("_%3.f-%3.f", minPt, maxPt), minPt_bin, maxPt_bin);
+        TH1D *hMass2 = (TH1D*)hMass_Pt->ProjectionX(Form("_%3.f_%3.f", minPt, maxPt), minPt_bin, maxPt_bin);
         std::cout << "Entries in Pt bin " << i+1 << ": " << hMass2->GetEntries() << std::endl;
-        hMass2->Write(Form("pt_%1.f-%1.f", minPt, maxPt));
+        hMass2->Write(Form("pt_%1.f_%1.f", minPt, maxPt));
         std::cout << "Pt bins = " << minPt << "--" << maxPt << std::endl;
     }
     Pt_Y_Bins->Close();
